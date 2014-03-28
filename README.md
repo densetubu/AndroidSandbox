@@ -22,6 +22,7 @@ Androidアプリの実装サンプル
 ### デザインガイド
 
 公式(英語): https://developer.android.com/design/index.html
+
 非公式(日本語翻訳): http://android-design.teamegg.co.jp/
 
 ほとんどが1機能1ページで簡潔しており、機能を実装する際の注意点もまとまっている。
@@ -44,7 +45,7 @@ Androidのドキュメントといえば Javadoc(クラスメソッド一覧) �
 
 **翻訳サイトは最新の情報に追従していないので注意**
 
-### [mixi-inc/AndroidTraining](https://github.com/mixi-inc/AndroidTraining)
+### mixi-inc/AndroidTraining
 
 https://github.com/mixi-inc/AndroidTraining
 
@@ -52,7 +53,7 @@ mixiが提供する、Android開発の入門ドキュメント。
 
 アクティビティのライフサイクルや各種基本実装など、基礎的な所が日本語でまとめられている。
 
-### [KeithYokoma/BakusokuAndroid](https://github.com/KeithYokoma/BakusokuAndroid)
+### KeithYokoma/BakusokuAndroid
 
 https://github.com/KeithYokoma/BakusokuAndroid
 
