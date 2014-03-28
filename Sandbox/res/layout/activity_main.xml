@@ -1,4 +1,14 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    レイアウトファイルには文字列と数値は直接書かないようにする
+    @dimen, @string, @style 等のリソースにまとめていくと再利用性が高まり、
+    アプリ全体でデザインや用語を統一しやすくなる
+
+    理想はアプリ毎にデザインを用意して、それを全て@style化して各所で再利用すること
+    ただし、慣れないうちからリソース化にこだわりすぎると手間がかかって面倒
+    最初のうちは共通で利用したいと思ったものだけをリソース化するようにするといいだろう
+    用意するのは面倒だが、2回目以降は @style の指定1つでデザインを出来るようになってかなり楽になる
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -7,12 +17,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="densetubu.android.sandbox.app.MainActivity"
-    tools:ignore="MergeRootFrame">
+    tools:ignore="MergeRootFrame"
+    ><!-- 閉じ括弧を改行しておくと、後で要素を追加・コピペなどをする時に便利 -->
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        style="@style/AppHeadTitle"
+        android:text="@string/home_welcome_head"
+        />
 
-</FrameLayout>
+    <TextView
+        style="@style/AppContentText"
+        android:text="@string/home_welcome_message"
+        android:textSize="@dimen/app_content_text_size"
+        />
+
+    <TextView
+        style="@style/AppSpacer"
+        />
+
+    <TextView
+        style="@style/AppHeadTitle"
+        android:text="@string/home_description_head"
+        />
+
+    <TextView
+        style="@style/AppContentText"
+        android:text="@string/home_description_message"
+        android:textSize="@dimen/app_content_text_size"
+        />
+
+</LinearLayout>

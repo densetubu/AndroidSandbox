@@ -2,7 +2,12 @@
 <resources>
 
     <string name="app_name">Sandbox</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- ホーム画面 -->
+    <string name="home_welcome_head">Welcome!</string>
+    <string name="home_welcome_message">Hello world!</string>
+    <string name="home_description_head">概要</string>
+    <string name="home_description_message">Androidアプリの実装サンプルです。詳細は各種リソースやコードにあるコメントを参照してください。</string>
 
 </resources>

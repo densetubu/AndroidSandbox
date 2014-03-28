@@ -17,4 +17,32 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <!-- よく使いそうなデザインはあらかじめ @style にしておく事で、2カ所以上で利用する場合に便利 -->
+
+    <!-- 見出し -->
+    <style name="AppHeadTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/app_text_padding_vertical</item>
+        <item name="android:paddingRight">@dimen/app_text_padding_horizontal</item>
+        <item name="android:paddingBottom">@dimen/app_text_padding_vertical</item>
+        <item name="android:paddingLeft">@dimen/app_text_padding_horizontal</item>
+        <item name="android:background">#dddddd</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 本文 -->
+    <style name="AppContentText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/app_text_padding_horizontal</item>
+    </style>
+
+    <!-- レイアウトの隙間を作るスペーサー -->
+    <style name="AppSpacer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">8dp</item>
+    </style>
+
 </resources>
