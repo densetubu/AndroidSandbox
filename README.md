@@ -14,11 +14,11 @@ Androidアプリの実装サンプル
 
 2. IDE(ADTもしくはAndroidStudio)を起動し、SDKマネージャーから必要なものをダウンロードする
 
-    - Android SDK Build-tools(最新版)
-    - Android 4.4.2(API 19)
-    - Android 2.1(API 7)
-    - Android Support Repository
-    - Android Support Library
+        - Android SDK Build-tools(最新版)
+        - Android 4.4.2(API 19)
+        - Android 2.1(API 7)
+        - Android Support Repository
+        - Android Support Library
 
 3. ダウンロードしたプロジェクトをインポートする
 
