@@ -33,9 +33,7 @@
         android:textSize="@dimen/app_content_text_size"
         />
 
-    <TextView
-        style="@style/AppSpacer"
-        />
+    <TextView style="@style/AppSpacer" />
 
     <TextView
         style="@style/AppHeadTitle"
@@ -46,6 +44,15 @@
         style="@style/AppContentText"
         android:text="@string/home_description_message"
         android:textSize="@dimen/app_content_text_size"
+        />
+
+    <TextView style="@style/AppSpacerLarge" />
+
+    <Button
+        style="@style/AppButtonBasic"
+        android:id="@+id/activity_main_content_button"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/home_content_button_text"
         />
 
 </LinearLayout>

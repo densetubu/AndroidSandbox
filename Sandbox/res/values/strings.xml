@@ -9,5 +9,7 @@
     <string name="home_welcome_message">Hello world!</string>
     <string name="home_description_head">概要</string>
     <string name="home_description_message">Androidアプリの実装サンプルです。詳細は各種リソースやコードにあるコメントを参照してください。</string>
+    <string name="home_content_button_text">ボタンサンプル</string>
+    <string name="home_content_button_message">Awesome click! X)</string>
 
 </resources>
