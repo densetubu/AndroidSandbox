@@ -11,5 +11,9 @@
     <string name="home_description_message">Androidアプリの実装サンプルです。詳細は各種リソースやコードにあるコメントを参照してください。</string>
     <string name="home_content_button_text">ボタンサンプル</string>
     <string name="home_content_button_message">Awesome click! X)</string>
+    <string name="home_weather_button_text">天気を見る</string>
+
+    <!-- 天気画面 -->
+    <string name="weather_head">今日・明日・あさっての天気</string>
 
 </resources>

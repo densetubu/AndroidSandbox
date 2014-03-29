@@ -33,6 +33,10 @@ public class MainActivity extends ActionBarActivity {
         // `findViewById` の戻り値はnullになる
         Button contentButton = (Button)findViewById(R.id.activity_main_content_button);
         contentButton.setOnClickListener(new OnClickToContentButton());
+
+        // 天気画面へ遷移するクリックイベントをセットする
+        Button weatherButton = (Button)findViewById(R.id.activity_main_weather_button);
+        weatherButton.setOnClickListener(new OnWeatherTransitClickListener(this));
     }
 
 
