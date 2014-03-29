@@ -16,7 +16,7 @@
 
 1. [リソースの活用: アプリの概要を表示](https://github.com/densetubu/AndroidSandbox/commit/c086d04cf75e6e06555668cc1b20913aecb6efe8)
 2. [画面の実装: ボタンにクリックイベントをセットする](https://github.com/densetubu/AndroidSandbox/commit/1e1c4d9938f710ff99f5df82041bdfef190780be)
-3. [画面の実装: 別のアクティビティ(お天気画面)へ遷移する](https://github.com/densetubu/AndroidSandbox/commit/0e6d6c02cef6e7c42981bcb1c49b24f5fb0d8340)
+3. [画面の実装: 別のアクティビティ(お天気画面)へ遷移する](https://github.com/densetubu/AndroidSandbox/commit/eb6bf588a194aec9159e2d6fafbf6f92ae06f118)
 4. [画面の実装: LoaderManagerを利用した一覧表示](https://github.com/densetubu/AndroidSandbox/commit/dd233d332a8885974d62aeb255e7612579868e8b)
 5. 画面の実装: livedoorのお天気情報を取得して表示する
 6. 画面の実装: 別アクティビティに二次細分区のお天気情報を表示する
