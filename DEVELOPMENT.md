@@ -19,7 +19,8 @@
 3. [画面の実装: 別のアクティビティ(お天気画面)へ遷移する](https://github.com/densetubu/AndroidSandbox/commit/eb6bf588a194aec9159e2d6fafbf6f92ae06f118)
 4. [画面の実装: LoaderManagerを利用した一覧表示](https://github.com/densetubu/AndroidSandbox/commit/dd233d332a8885974d62aeb255e7612579868e8b)
 5. 画面の実装: livedoorのお天気情報を取得して表示する
-6. 画面の実装: 別アクティビティに二次細分区のお天気情報を表示する
+6. よりよい実装: 呼び出し側に null を意識させない
+7. 画面の実装: 別アクティビティに二次細分区のお天気情報を表示する
 
 ## よりよい実装へ
 

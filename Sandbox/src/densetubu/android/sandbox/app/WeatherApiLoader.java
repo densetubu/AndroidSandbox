@@ -2,12 +2,10 @@ package densetubu.android.sandbox.app;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
 
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,56 +14,28 @@ import java.io.IOException;
 /**
  * {@link #loadInBackground()} 以外でOverrideしているメソッドはお決まりとして共通化しておくと便利
  */
-public class WeatherApiLoader extends AsyncTaskLoader<WeatherForecast> {
+public class WeatherApiLoader extends AsyncTaskLoader<WeatherResponse> {
 
-    private final String LOG_TAG = WeatherApiLoader.class.getName();
-    private WeatherForecast result;
+    private WeatherResponse result;
 
     public WeatherApiLoader(Context context) {
         super(context);
     }
 
     @Override
-    public WeatherForecast loadInBackground() {
-        WeatherForecast.Builder builder = new WeatherForecast.Builder();
-        boolean successful = false;
-
+    public WeatherResponse loadInBackground() {
+        WeatherResponse response;
         try {
-            JSONObject response = requestApi();
-            // LogCatにデバッグログを仕込んでおくと開発中に便利
-            // 参考: http://www.techdoctranslator.com/android/developing/tools/logcat
-            // その他: 「logcat eclipse」などで検索
-            Log.d(LOG_TAG, "response: " + response.toString(1));
-
-            JSONArray forecasts = response.getJSONArray("forecasts");
-
-            JSONObject today = forecasts.getJSONObject(0);
-            builder.setToday(new WeatherBuilder()
-                    .setName(today.getString("telop"))
-                    .setDay(today.getString("date"))
-                    .build()
-            );
-
-            JSONObject tomorrow = forecasts.getJSONObject(1);
-            builder.setTomorrow(new WeatherBuilder()
-                    .setName(tomorrow.getString("telop"))
-                    .setDay(tomorrow.getString("date"))
-                    .build()
-            );
-
-            successful = true;
+            response = WeatherResponse.from(requestApi());
         } catch (IOException e) {
             e.printStackTrace();
+            response = WeatherResponse.fail();
         } catch (JSONException e) {
             e.printStackTrace();
+            response = WeatherResponse.fail();
         }
 
-        // TODO: nullを返さない形がよい
-        if (successful) {
-            return builder.build();
-        } else {
-            return null;
-        }
+        return response;
     }
 
     /**
@@ -84,7 +54,7 @@ public class WeatherApiLoader extends AsyncTaskLoader<WeatherForecast> {
     }
 
     @Override
-    public void deliverResult(WeatherForecast result) {
+    public void deliverResult(WeatherResponse result) {
         if (isReset()) {
             if (this.result != null) {
                 this.result = null;

@@ -26,7 +26,7 @@ import android.widget.Toast;
  *  サービスクラス等のLoaderCallbacksが利用出来ない環境では、そもそも自身以外のライフサイクルを意識する必要性が薄い
  *  AsyncTaskLoaderが使えないからダメという事はなく、サービスクラスでAsyncTaskを使っていてもなんら問題はない
  */
-class WeatherApiLoaderCallbacks implements LoaderManager.LoaderCallbacks<WeatherForecast> {
+class WeatherApiLoaderCallbacks implements LoaderManager.LoaderCallbacks<WeatherResponse> {
 
     private final Context context;
     private final ArrayAdapter<Weather> adapter;
@@ -37,23 +37,22 @@ class WeatherApiLoaderCallbacks implements LoaderManager.LoaderCallbacks<Weather
     }
 
     @Override
-    public Loader<WeatherForecast> onCreateLoader(int i, Bundle bundle) {
+    public Loader<WeatherResponse> onCreateLoader(int i, Bundle bundle) {
         return new WeatherApiLoader(context);
     }
 
     @Override
-    public void onLoadFinished(Loader<WeatherForecast> weatherForecastLoader, WeatherForecast weatherForecast) {
-        // TODO: nullを意識させるような実装は、チェック漏れによるNullPointerException(通称 NPE) によるクラッシュリスクがあるのでやめるべき
-        if (weatherForecast != null) {
-            adapter.add(weatherForecast.getToday());
-            adapter.add(weatherForecast.getTomorrow());
+    public void onLoadFinished(Loader<WeatherResponse> weatherForecastLoader, WeatherResponse weatherForecast) {
+        if (weatherForecast.isSuccess()) {
+            adapter.add(weatherForecast.getForecast().getToday());
+            adapter.add(weatherForecast.getForecast().getTomorrow());
         } else {
             Toast.makeText(context, R.string.connection_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void onLoaderReset(Loader<WeatherForecast> weatherForecastLoader) {
+    public void onLoaderReset(Loader<WeatherResponse> weatherForecastLoader) {
 
     }
 }
