@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 /**
- *
  * AsyncTask vs AsyncTaskLoader(+LoaderCallbacks)
+ *
+ *  とりあえずは、アクティビティ・フラグメント上で実行する場合はAsyncTaskLoader(+LoaderCallbacks)、
+ *  サービスクラスではAsyncTask、と覚えておくとよい
  *
  *  どちらも非同期でバックグラウンド処理が実行されるという点では同じ
  *  違いはフラグメント・アクティビティに紐づくかどうか
@@ -22,9 +25,6 @@ import android.widget.ArrayAdapter;
  *
  *  サービスクラス等のLoaderCallbacksが利用出来ない環境では、そもそも自身以外のライフサイクルを意識する必要性が薄い
  *  AsyncTaskLoaderが使えないからダメという事はなく、サービスクラスでAsyncTaskを使っていてもなんら問題はない
- *
- *  とりあえずは、アクティビティ・フラグメント上で実行する場合はAsyncTaskLoader(+LoaderCallbacks)、
- *  サービスクラスではAsyncTask、と覚えておくとよい
  */
 class WeatherApiLoaderCallbacks implements LoaderManager.LoaderCallbacks<WeatherForecast> {
 
@@ -43,9 +43,13 @@ class WeatherApiLoaderCallbacks implements LoaderManager.LoaderCallbacks<Weather
 
     @Override
     public void onLoadFinished(Loader<WeatherForecast> weatherForecastLoader, WeatherForecast weatherForecast) {
-        adapter.add(weatherForecast.getToday());
-        adapter.add(weatherForecast.getTomorrow());
-        adapter.add(weatherForecast.getDayAfterTomorrow());
+        // TODO: nullを意識させるような実装は、チェック漏れによるNullPointerException(通称 NPE) によるクラッシュリスクがあるのでやめるべき
+        if (weatherForecast != null) {
+            adapter.add(weatherForecast.getToday());
+            adapter.add(weatherForecast.getTomorrow());
+        } else {
+            Toast.makeText(context, R.string.connection_failed, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
