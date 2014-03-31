@@ -6,6 +6,10 @@ Androidアプリの実装サンプル
 
 もし [AndroidStudio](http://developer.android.com/sdk/installing/studio.html) を利用する場合は、ダウンロード時のバージョン (*0.4.6*) から **アップデートしないようにしてください**
 
+## サンプルプロジェクトについて
+
+[DEVELOPMENT.md](DEVELOPMENT.md) を参照
+
 ## セットアップ手順
 
 1. ダウンロードする
@@ -65,7 +69,7 @@ Androidのドキュメントといえば Javadoc(クラスメソッド一覧) �
 
 [Googel翻訳](http://translate.google.co.jp/) などの翻訳ツールで概略を掴んでみる事も有効です
 
-**翻訳サイトは最新の情報に追従していないので注意**
+**2014年3月31日現在、[翻訳サイト](http://www.techdoctranslator.com/android) は最新の情報に追従していないので注意**
 
 ### mixi-inc/AndroidTraining
 
