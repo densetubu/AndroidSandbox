@@ -5,7 +5,6 @@ class WeatherForecast {
     static class Builder {
         private Weather today;
         private Weather tomorrow;
-        private Weather dayAfterTomorrow;
 
         WeatherForecast build() {
             return new WeatherForecast(this);
@@ -21,21 +20,14 @@ class WeatherForecast {
             return this;
         }
 
-        Builder setDayAfterTomorrow(Weather weather) {
-            this.dayAfterTomorrow = weather;
-            return this;
-        }
-
     }
 
     private final Weather today;
     private final Weather tomorrow;
-    private final Weather dayAfterTomorrow;
 
     WeatherForecast(Builder builder) {
         this.today = builder.today;
         this.tomorrow = builder.tomorrow;
-        this.dayAfterTomorrow = builder.dayAfterTomorrow;
     }
 
     Weather getToday() {
@@ -44,9 +36,5 @@ class WeatherForecast {
 
     Weather getTomorrow() {
         return tomorrow;
-    }
-
-    Weather getDayAfterTomorrow() {
-        return dayAfterTomorrow;
     }
 }

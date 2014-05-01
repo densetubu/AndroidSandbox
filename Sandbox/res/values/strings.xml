@@ -3,6 +3,7 @@
 
     <string name="app_name">Sandbox</string>
     <string name="action_settings">Settings</string>
+    <string name="connection_failed">通信に失敗しました</string>
 
     <!-- ホーム画面 -->
     <string name="home_welcome_head">Welcome!</string>
@@ -14,6 +15,7 @@
     <string name="home_weather_button_text">天気を見る</string>
 
     <!-- 天気画面 -->
-    <string name="weather_head">今日・明日・あさっての天気</string>
+    <string name="weather_api_endpoint">http://weather.livedoor.com/forecast/webservice/json/v1?city=130010</string>
+    <string name="weather_head">今日・明日の天気</string>
 
 </resources>

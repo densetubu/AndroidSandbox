@@ -3,28 +3,58 @@ package densetubu.android.sandbox.app;
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 /**
  * {@link #loadInBackground()} 以外でOverrideしているメソッドはお決まりとして共通化しておくと便利
  */
-public class WeatherApiLoader extends AsyncTaskLoader<WeatherForecast> {
+public class WeatherApiLoader extends AsyncTaskLoader<WeatherResponse> {
 
-    private WeatherForecast result;
+    private WeatherResponse result;
 
     public WeatherApiLoader(Context context) {
         super(context);
     }
 
     @Override
-    public WeatherForecast loadInBackground() {
-        return new WeatherForecast.Builder()
-                .setToday(new WeatherBuilder().setDay("今日").setName("晴れ").build())
-                .setTomorrow(new WeatherBuilder().setDay("明日").setName("晴れ").build())
-                .setDayAfterTomorrow(new WeatherBuilder().setDay("明後日").setName("曇り").build())
-                .build();
+    public WeatherResponse loadInBackground() {
+        WeatherResponse response;
+        try {
+            response = WeatherResponse.from(requestApi());
+        } catch (IOException e) {
+            e.printStackTrace();
+            response = WeatherResponse.fail();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            response = WeatherResponse.fail();
+        }
+
+        return response;
+    }
+
+    /**
+     * Android組込みのHttpComponent（HttpClient）の正しい使い方といくつかのtips - terurouメモ
+     * http://terurou.hateblo.jp/entry/20110702/1309541200
+     *
+     * 自前でHTTPクライアントを実装するよりも、volleyやandroid-async-http、Retrofitなどの
+     * HTTP通信ライブラリを利用する方がスッキリ記述でき、かつお手軽にリトライ処理や安定性を確保出来るのでモアベター
+     * この実装は必要最低限で、タイムアウト時間の設定や細かい失敗ケースのケアなどはしていない
+     */
+    private JSONObject requestApi() throws IOException, JSONException {
+        DefaultHttpClient client = new DefaultHttpClient();
+        HttpGet request = new HttpGet(getContext().getString(R.string.weather_api_endpoint));
+        String response = client.execute(request, new BasicResponseHandler());
+        return new JSONObject(response);
     }
 
     @Override
-    public void deliverResult(WeatherForecast result) {
+    public void deliverResult(WeatherResponse result) {
         if (isReset()) {
             if (this.result != null) {
                 this.result = null;
